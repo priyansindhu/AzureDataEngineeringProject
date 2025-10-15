@@ -1,0 +1,9 @@
+{
+	"name": "sl-df-projectdev",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "02121c6e-6955-48c8-a6a2-f27fbedeefa6",
+		"tenantId": "05cdce5c-8fd1-43af-8ec9-fa3b776a426f"
+	}
+}
