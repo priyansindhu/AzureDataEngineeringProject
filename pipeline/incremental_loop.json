@@ -8,6 +8,11 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.loop_input",
+						"type": "Expression"
+					},
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "AzuretoDataLake",
@@ -38,7 +43,7 @@
 								"source": {
 									"type": "AzureSqlSource",
 									"sqlReaderQuery": {
-										"value": "select * from @{item().schema}.@{item().table} where @{item().cdc}>\n'@{if(empty(item().from_date),activity('LastCDC').output.value[0].cdc,item().from_date)}'\n\n",
+										"value": "select * from @{item().schema}.@{item().table} where @{item().cdc_col}>\n'@{if(empty(item().from_date),activity('LastCDC').output.value[0].cdc,item().from_date)}'\n\n",
 										"type": "Expression"
 									},
 									"queryTimeout": "02:00:00",
@@ -180,11 +185,11 @@
 												"parameters": {
 													"container": "bronze",
 													"folder": {
-														"value": "@pipeline().parameters.table",
+														"value": "@item().table",
 														"type": "Expression"
 													},
 													"file": {
-														"value": "@concat(pipeline().parameters.table,'_',variables('current'))",
+														"value": "@concat(item().table,'_',variables('current'))",
 														"type": "Expression"
 													}
 												}
@@ -220,7 +225,7 @@
 												{
 													"type": "Query",
 													"text": {
-														"value": "select MAX(@{item().cdc}) as cdc from @{item().schema}.@{item().table}",
+														"value": "select MAX(@{item().cdc_col}) as cdc from @{item().schema}.@{item().table}",
 														"type": "Expression"
 													}
 												}
