@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "sl-df-projectdev"
+		},
+		"AzureDataLakeStorageLinkedService_accountKey": {
+			"value": ""
+		},
+		"AzureSQLLinkedService_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorageLinkedService_properties_typeProperties_url": {
+			"value": "https://slfirststorageaccount.dfs.core.windows.net/"
+		},
+		"AzureSQLLinkedService_properties_typeProperties_server": {
+			"value": "sl-project-tes-dev.database.windows.net"
+		},
+		"AzureSQLLinkedService_properties_typeProperties_database": {
+			"value": "sl-dev-dataproject"
+		},
+		"AzureSQLLinkedService_properties_typeProperties_userName": {
+			"value": "sldataanalyst"
+		}
+	}
+}
